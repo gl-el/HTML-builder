@@ -26,13 +26,13 @@ function mergeFiles(src, target, name) {
     if (err) {
       console.log(err);
     }
-    let wholeData = [];
     fs.writeFile(path.join(target, `${name}`), '', (err) => {
       if (err) {
         console.log(err.message);
       }
     })
     files.forEach((file) => {
+      let wholeData = [];
       if (file.isFile() && path.extname(file.name) === '.css') {
         const stream = fs.createReadStream(path.join(src, file.name), 'utf-8'); 
         stream.on('data', (data) => {
